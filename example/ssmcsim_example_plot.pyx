@@ -40,7 +40,7 @@ set xrange [0:5]
 set grid x y
 
 set multiplot
-set output 'plot1.pdf'
+set output 'thermodynamics.pdf'
 set nodisplay
 
 set ylabel 'internal energy~$u(T)$'

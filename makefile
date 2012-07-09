@@ -76,8 +76,7 @@ utils_vec2.o : utils_vec2.hpp utils_vec2.cpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c utils_vec2.cpp -o utils_vec2.o
 
 sa_coolingschedules.o : sa_coolingschedules.hpp sa_coolingschedules.cpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c sa_coolingschedules.cpp \
-																-o sa_coolingschedules.o
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c sa_coolingschedules.cpp -o sa_coolingschedules.o
 
 
 # ----- SPIN SYSTEM MODEL OBJECT FILES -----
@@ -88,21 +87,18 @@ model_ising1dmet.o : model_ising1dmet.hpp model_ising1dmet.cpp systemmodel.hpp \
 
 model_ising2dsqrmet.o : model_ising2dsqrmet.hpp model_ising2dsqrmet.cpp \
 												systemmodel.hpp isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrmet.cpp \
-														    -o model_ising2dsqrmet.o
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrmet.cpp -o model_ising2dsqrmet.o
 
 model_ising2dsqrffwolff.o : model_ising2dsqrffwolff.hpp \
 														model_ising2dsqrffwolff.cpp model_ising2dsqrmet.hpp \
 														systemmodel.hpp isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrffwolff.cpp \
-																-o model_ising2dsqrffwolff.o
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrffwolff.cpp -o model_ising2dsqrffwolff.o
 
 model_ising2dsqrdipolemet.o : model_ising2dsqrdipolemet.hpp \
 															model_ising2dsqrdipolemet.cpp \
 															model_ising2dsqrmet.hpp systemmodel.hpp \
 															isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrdipolemet.cpp \
-															  -o model_ising2dsqrdipolemet.o
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrdipolemet.cpp -o model_ising2dsqrdipolemet.o
 
 model_dip_sqr.o : model_dip_sqr.hpp model_dip_sqr.cpp systemmodel.hpp \
 									isingspin.hpp utils.hpp

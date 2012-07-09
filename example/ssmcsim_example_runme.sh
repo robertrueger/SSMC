@@ -57,6 +57,7 @@ do
   ./ssmcsim.sh $system_type $N $periodic $init $drysweeps $bins $binwidth \
                $intersweeps $run_plots $images $calc_autocorr $calc_sscorr \
                $smode_perbin $smode_permcs $finite_size_correction $J $g $B $T
+  echo
 done
 
 
