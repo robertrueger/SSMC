@@ -62,68 +62,72 @@ using namespace std;
 
 // ----- MAIN: SIMULATED ANNEALING MANAGER -----
 
-int main(int argc, char * argv[]) {
-	cout << "SPIN SYSTEM MONTE CARLO SIMULATED ANNEALING\n";
-	cout << "===========================================\n\n";
+int main( int argc, char* argv[] )
+{
+  cout << "SPIN SYSTEM MONTE CARLO SIMULATED ANNEALING\n";
+  cout << "===========================================\n\n";
 
-	// ----- READ ARGUMENTS FROM COMMAND LINE -----
-	cout << "reading from command line and preparing the simulated annealing ...\n";
+  // ----- READ ARGUMENTS FROM COMMAND LINE -----
+  cout << "reading from command line and preparing the simulated annealing ...\n";
 
-	simann sa;
+  simann sa;
 
-	sa.par.system_type = atoi(argv[1]);
+  sa.par.system_type = atoi( argv[1] );
 
-	sa.par.N = atoi(argv[2]);
-	sa.par.periodic = atoi(argv[3]);
+  sa.par.N = atoi( argv[2] );
+  sa.par.periodic = atoi( argv[3] );
 
-	sa.par.init = *argv[4];
+  sa.par.init = *argv[4];
 
-	sa.par.T_start = atof(argv[5]);
-	sa.par.T_end = atof(argv[6]);
+  sa.par.T_start = atof( argv[5] );
+  sa.par.T_end = atof( argv[6] );
 
-	sa.par.t_end = atoi(argv[7]);
-	sa.par.cooling_schedule = *argv[8];
+  sa.par.t_end = atoi( argv[7] );
+  sa.par.cooling_schedule = *argv[8];
 
-	sa.par.t_boost = atoi(argv[9]);
+  sa.par.t_boost = atoi( argv[9] );
 
-	sa.par.run_plot = atoi(argv[10]);
+  sa.par.run_plot = atoi( argv[10] );
 
-	sa.par.take_images = atoi(argv[11]);
+  sa.par.take_images = atoi( argv[11] );
 
-	sa.par.J = atof(argv[12]);
-	sa.par.g = atof(argv[13]);
+  sa.par.J = atof( argv[12] );
+  sa.par.g = atof( argv[13] );
 
-	sa.par.B = atof(argv[14]);
+  sa.par.B = atof( argv[14] );
 
-	// generate the name of the output directory ...
-	stringstream tmp;
-	tmp << "sa" << sa.par.system_type << "_"
-		<< "N" << sa.par.N << (sa.par.periodic ? "p" : "") << "_"
-		<< sa.par.init << "_"
-		<< setfill('0')
-		<< "T-" << setw(5) << int(sa.par.T_start*1000) << "-" << setw(5) << int(sa.par.T_end*1000) << "_"
-		<< sa.par.t_end << sa.par.cooling_schedule << "_"
-		<< "J" << setw(5) << int(sa.par.J*1000) << "_"
-		<< "g" << setw(5) << int(sa.par.g*1000) << "_"
-		<< "B" << setw(5) << int(sa.par.B*1000);
-	const string wdir = tmp.str(); tmp.str("");
+  // generate the name of the output directory ...
+  stringstream tmp;
+  tmp << "sa" << sa.par.system_type << "_"
+      << "N" << sa.par.N << ( sa.par.periodic ? "p" : "" ) << "_"
+      << sa.par.init << "_"
+      << setfill( '0' )
+      << "T-" << setw( 5 ) << int( sa.par.T_start * 1000 ) << "-"
+              << setw( 5 ) << int( sa.par.T_end * 1000 ) << "_"
+      << sa.par.t_end << sa.par.cooling_schedule << "_"
+      << "J" << setw( 5 ) << int( sa.par.J * 1000 ) << "_"
+      << "g" << setw( 5 ) << int( sa.par.g * 1000 ) << "_"
+      << "B" << setw( 5 ) << int( sa.par.B * 1000 );
+  const string wdir = tmp.str();
+  tmp.str( "" );
 
-	// make an output directory
-	if (system(("test -e " + wdir + " && rm -r " + wdir + " ; mkdir " + wdir).c_str()) != 0) {
-		cout << "ERROR while making the output directory " << wdir;
-		return 1;
-	}
+  // make an output directory
+  if ( system( ( "test -e " + wdir + " && rm -r " + wdir
+                + " ; mkdir " + wdir ).c_str() ) != 0 ) {
+    cout << "ERROR while making the output directory " << wdir;
+    return 1;
+  }
 
-	// ----- RUN THE SIMULATED ANNEALING -----
-	cout << "running the simulated annealing ( " << wdir << " ) ...\n";
+  // ----- RUN THE SIMULATED ANNEALING -----
+  cout << "running the simulated annealing ( " << wdir << " ) ...\n";
 
-	srand(time(NULL));
+  srand( time( NULL ) );
 
-	sa.res = sarun(sa.par, wdir);
-	if (!sa.res.success) {
-		cout << "WARNING: simulated annealing terminated unsuccessfully!\n";
-	}
+  sa.res = sarun( sa.par, wdir );
+  if ( !sa.res.success ) {
+    cout << "WARNING: simulated annealing terminated unsuccessfully!\n";
+  }
 
-	cout << "... done!";
-	return 0;
+  cout << "... done!";
+  return 0;
 }

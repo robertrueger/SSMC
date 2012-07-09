@@ -50,10 +50,13 @@ smode_permcs=0
 
 # run the simulations
 for T in 0 0.5 1 1.2 1.4 1.6 1.7 1.8 1.9 \
-		 2.0 2.1 2.15 2.175 2.2 2.225 2.25 2.275 2.3 2.325 2.35 2.375 2.4 2.425 2.45 2.5 \
-		 2.6 2.7 2.8 2.9 3.0 3.2 3.4 3.6 4 4.5 5 
+    		 2.0 2.1 2.15 2.175 2.2 2.225 2.25 2.275 \
+         2.3 2.325 2.35 2.375 2.4 2.425 2.45 2.5 \
+		     2.6 2.7 2.8 2.9 3.0 3.2 3.4 3.6 4 4.5 5 
 do
-	./ssmcsim.sh $system_type $N $periodic $init $drysweeps $bins $binwidth $intersweeps $run_plots $images $calc_autocorr $calc_sscorr $smode_perbin $smode_permcs $finite_size_correction $J $g $B $T
+  ./ssmcsim.sh $system_type $N $periodic $init $drysweeps $bins $binwidth \
+               $intersweeps $run_plots $images $calc_autocorr $calc_sscorr \
+               $smode_perbin $smode_permcs $finite_size_correction $J $g $B $T
 done
 
 
@@ -61,28 +64,29 @@ done
 rm results.dat results.raw || true
 for dir in `ls -l | grep ^d | awk '{print $9}'`; do
 
-	cat $dir/results.dat >> ./results.raw
-	cd $dir
+  cat $dir/results.dat >> ./results.raw
+  cd $dir
 
-	[ -e ac_plot.png ]  	|| (gnuplot ac_plot.gnu  	|| true)
-	[ -e run_plot.png ] 	|| (gnuplot run_plot.gnu 	|| true)
-	[ -e sscorr_plot.png ] 	|| (gnuplot sscorr_plot.gnu || true)
-	[ -e mhisto_plot.pdf ] 	|| (pyxplot histo_plot.pyx 	|| true)
+  [ -e ac_plot.png ]  	|| (gnuplot ac_plot.gnu  	|| true)
+  [ -e run_plot.png ] 	|| (gnuplot run_plot.gnu 	|| true)
+  [ -e sscorr_plot.png ] 	|| (gnuplot sscorr_plot.gnu || true)
+  [ -e mhisto_plot.pdf ] 	|| (pyxplot histo_plot.pyx 	|| true)
 
-	if [ -d images ];
-	then
-		cd images
-		mencoder mf://*.png -mf fps=30:type=png -ovc copy -oac copy -o ../video.avi
-		cd ..
-		tar -caf images.tar.xz images
-		rm -r images
-	fi
+  if [ -d images ];
+  then
+    cd images
+    mencoder mf://*.png -mf fps=30:type=png -ovc copy -oac copy -o ../video.avi
+    cd ..
+    tar -caf images.tar.xz images
+    rm -r images
+  fi
 
-	cd ..
+  cd ..
 done
 
 # remove infs and nans from results.dat
-sed -e 's/inf/0.0000000e+00/g' results.raw | sed -e 's/nan/0.0000000e+00/g' > results.dat
+sed -e 's/inf/0.0000000e+00/g' results.raw \
+| sed -e 's/nan/0.0000000e+00/g' > results.dat
 
 # plot results.dat with pyxplot
 echo -e "[latex]\nPreamble = \usepackage[ngerman]{babel}" >> .pyxplotrc

@@ -25,21 +25,21 @@ class IsingSpin
 {
     // ----- ISING SPIN CLASS ------
 
-    private:
+  private:
 
-        signed char S;
+    signed char S;
 
-    public:
+  public:
 
-        IsingSpin();
+    IsingSpin();
 
-        int get() const;
+    int get() const;
 
-        void set( const int& newS );
+    void set( const int& newS );
 
-        void flip();
+    void flip();
 
-        int operator*( const IsingSpin& S ) const;
+    int operator*( const IsingSpin& S ) const;
 };
 
 #endif // _ISINGSPIN_H_INCLUDED

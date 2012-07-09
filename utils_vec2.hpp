@@ -29,13 +29,13 @@ class Vec2
 {
     // ----- HELPER CLASS: TWO-DIMENSIONAL VECTOR -----
 
-    public:
+  public:
 
-        double x, y;
+    double x, y;
 
-        // constructors
-        Vec2();
-        Vec2( double const& x_init, double const& y_init );
+    // constructors
+    Vec2();
+    Vec2( double const& x_init, double const& y_init );
 };
 
 // multiplication with double

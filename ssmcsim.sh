@@ -24,7 +24,8 @@
 
 if [ $# -eq 19 ]; then
 	echo "ssmcsim called in cli mode ..."
-	time ./ssmcsim $1 $2 $3 $4 $5 $6 $7 $8 $9 ${10} ${11} ${12} ${13} ${14} ${15} ${16} ${17} ${18} ${19}
+	time ./ssmcsim $1 $2 $3 $4 $5 $6 $7 $8 $9 ${10} ${11} ${12} \
+                 ${13} ${14} ${15} ${16} ${17} ${18} ${19}
 	exit
 fi
 
@@ -89,7 +90,8 @@ T=2.269
 
 # ------------------ DATA ANALYSIS OPTIONS --------------------
 
-# do you want SSMCSIM to call the plotting scripts automatically? (requires gnuplot and pyxplot)
+# do you want SSMCSIM to call the plotting scripts automatically?
+# (requires gnuplot and pyxplot)
 run_plots=1
 
 # do you want to take images of the system?
@@ -118,9 +120,9 @@ finite_size_correction=2
 # ----------------------- EXECUTION --------------------------
 
 time ./ssmcsim  $system_type $N $periodic \
-				$init $drysweeps $bins $binwidth $intersweeps \
-				$run_plots $images \
-				$calc_autocorr $calc_sscorr \
-				$smode_perbin $smode_permcs \
-				$finite_size_correction \
-				$J $g $B $T
+                $init $drysweeps $bins $binwidth $intersweeps \
+                $run_plots $images \
+                $calc_autocorr $calc_sscorr \
+                $smode_perbin $smode_permcs \
+                $finite_size_correction \
+                $J $g $B $T

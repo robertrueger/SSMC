@@ -27,9 +27,11 @@ using namespace std;
 // ----- SIMULATED ANNEALING COOLING SCHEDULES -----
 
 double linear_cooling( const double& T_start, const double& T_end,
-                       const unsigned long int& t_end, const unsigned long int& t );
+                       const unsigned long int& t_end,
+                       const unsigned long int& t );
 
 double parabolic_cooling( const double& T_start, const double& T_end,
-                          const unsigned long int& t_end, const unsigned long int& t );
+                          const unsigned long int& t_end, 
+                          const unsigned long int& t );
 
 #endif // _SA_COOLINGSCHEDULES_H_INCLUDED

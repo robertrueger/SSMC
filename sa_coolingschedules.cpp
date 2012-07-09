@@ -23,14 +23,17 @@
 // ----- SIMULATED ANNEALING COOLING SCHEDULES -----
 
 double linear_cooling( const double& T_start, const double& T_end,
-                       const unsigned long int& t_end, const unsigned long int& t )
+                       const unsigned long int& t_end, 
+                       const unsigned long int& t )
 {
-    return T_start - ( T_start - T_end ) * ( double( t ) / double( t_end ) );
+  return T_start - ( T_start - T_end ) * ( double( t ) / double( t_end ) );
 }
 
 
 double parabolic_cooling( const double& T_start, const double& T_end,
-                          const unsigned long int& t_end, const unsigned long int& t )
+                          const unsigned long int& t_end,
+                          const unsigned long int& t )
 {
-    return ( T_start - T_end ) * pow( ( 1 - double( t ) / double( t_end ) ), 2 ) + T_end;
+  return ( T_start - T_end ) * pow( ( 1 - double( t ) / double( t_end ) ), 2 )
+                                                                        + T_end;
 }

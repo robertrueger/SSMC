@@ -16,18 +16,23 @@
 # along with SSMC.  If not, see <http://www.gnu.org/licenses/>.
 
 
-CXX			= g++
+CXX				= g++
 CXXFLAGS	= -Wall -march=native -O3 -flto -fuse-linker-plugin
 DEFINES		=
 LDFLAGS		= -lgsl -lgslcblas `libpng-config --ldflags`
 
-EXECTUABLES = ssmcsim ssmcsa
+EXECTUABLES	= ssmcsim ssmcsa
 
 OBJECTS_SIM	= ssmcsim.o simrun.o
 OBJECTS_SA	= ssmcsa.o sarun.o sa_coolingschedules.o
-OBJECTS_ALL = systemmodel.o model_dip_sqr.o model_dip_hc.o model_ising1dmet.o model_ising2dsqrmet.o model_ising2dsqrffwolff.o model_ising2dsqrdipolemet.o isingspin.o utils.o utils_vec2.o
+OBJECTS_ALL	= systemmodel.o isingspin.o utils.o utils_vec2.o \
+ 							model_dip_sqr.o model_dip_hc.o model_ising1dmet.o \
+							model_ising2dsqrmet.o model_ising2dsqrffwolff.o \
+							model_ising2dsqrdipolemet.o
 
-HEADERS_MODELS = model_dip_sqr.hpp model_dip_hc.hpp model_ising1dmet.hpp model_ising2dsqrmet.hpp model_ising2dsqrffwolff.hpp model_ising2dsqrdipolemet.hpp
+HEADERS_MODELS = model_dip_sqr.hpp model_dip_hc.hpp model_ising1dmet.hpp \
+								 model_ising2dsqrmet.hpp model_ising2dsqrffwolff.hpp \
+								 model_ising2dsqrdipolemet.hpp
 
 
 ssmc all : ssmcsim ssmcsa
@@ -50,10 +55,12 @@ ssmcsim.o : ssmcsim.cpp simrun.hpp
 ssmcsa.o : ssmcsa.cpp sarun.hpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c ssmcsa.cpp -o ssmcsa.o
 
-simrun.o : simrun.hpp simrun.cpp systemmodel.hpp utils.hpp sim_datastruct.hpp $(HEADERS_MODELS)
+simrun.o : simrun.hpp simrun.cpp systemmodel.hpp utils.hpp sim_datastruct.hpp \
+					 $(HEADERS_MODELS)
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c simrun.cpp -o simrun.o
 
-sarun.o : sarun.hpp sarun.cpp systemmodel.hpp utils.hpp sa_datastruct.hpp sa_coolingschedules.hpp $(HEADERS_MODELS)
+sarun.o : sarun.hpp sarun.cpp systemmodel.hpp utils.hpp sa_datastruct.hpp \
+					sa_coolingschedules.hpp $(HEADERS_MODELS)
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c sarun.cpp -o sarun.o
 
 systemmodel.o : systemmodel.hpp systemmodel.cpp
@@ -69,25 +76,38 @@ utils_vec2.o : utils_vec2.hpp utils_vec2.cpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c utils_vec2.cpp -o utils_vec2.o
 
 sa_coolingschedules.o : sa_coolingschedules.hpp sa_coolingschedules.cpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c sa_coolingschedules.cpp -o sa_coolingschedules.o
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c sa_coolingschedules.cpp \
+																-o sa_coolingschedules.o
 
 
 # ----- SPIN SYSTEM MODEL OBJECT FILES -----
 
-model_ising1dmet.o : model_ising1dmet.hpp model_ising1dmet.cpp systemmodel.hpp isingspin.hpp
+model_ising1dmet.o : model_ising1dmet.hpp model_ising1dmet.cpp systemmodel.hpp \
+										 isingspin.hpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising1dmet.cpp -o model_ising1dmet.o
 
-model_ising2dsqrmet.o : model_ising2dsqrmet.hpp model_ising2dsqrmet.cpp systemmodel.hpp isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrmet.cpp -o model_ising2dsqrmet.o
+model_ising2dsqrmet.o : model_ising2dsqrmet.hpp model_ising2dsqrmet.cpp \
+												systemmodel.hpp isingspin.hpp
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrmet.cpp \
+														    -o model_ising2dsqrmet.o
 
-model_ising2dsqrffwolff.o : model_ising2dsqrffwolff.hpp model_ising2dsqrffwolff.cpp model_ising2dsqrmet.hpp systemmodel.hpp isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrffwolff.cpp -o model_ising2dsqrffwolff.o
+model_ising2dsqrffwolff.o : model_ising2dsqrffwolff.hpp \
+														model_ising2dsqrffwolff.cpp model_ising2dsqrmet.hpp \
+														systemmodel.hpp isingspin.hpp
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrffwolff.cpp \
+																-o model_ising2dsqrffwolff.o
 
-model_ising2dsqrdipolemet.o : model_ising2dsqrdipolemet.hpp model_ising2dsqrdipolemet.cpp model_ising2dsqrmet.hpp systemmodel.hpp isingspin.hpp
-	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrdipolemet.cpp -o model_ising2dsqrdipolemet.o
+model_ising2dsqrdipolemet.o : model_ising2dsqrdipolemet.hpp \
+															model_ising2dsqrdipolemet.cpp \
+															model_ising2dsqrmet.hpp systemmodel.hpp \
+															isingspin.hpp
+	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_ising2dsqrdipolemet.cpp \
+															  -o model_ising2dsqrdipolemet.o
 
-model_dip_sqr.o : model_dip_sqr.hpp model_dip_sqr.cpp systemmodel.hpp isingspin.hpp utils.hpp
+model_dip_sqr.o : model_dip_sqr.hpp model_dip_sqr.cpp systemmodel.hpp \
+									isingspin.hpp utils.hpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_dip_sqr.cpp -o model_dip_sqr.o
 
-model_dip_hc.o : model_dip_hc.hpp model_dip_hc.cpp systemmodel.hpp isingspin.hpp utils.hpp utils_vec2.hpp
+model_dip_hc.o : model_dip_hc.hpp model_dip_hc.cpp systemmodel.hpp \
+								 isingspin.hpp utils.hpp utils_vec2.hpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c model_dip_hc.cpp -o model_dip_hc.o

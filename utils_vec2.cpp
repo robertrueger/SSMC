@@ -25,47 +25,48 @@
 Vec2::Vec2() : x( 0.0 ), y( 0.0 ) { }
 
 
-Vec2::Vec2( double const& x_init, double const& y_init ) : x( x_init ), y( y_init ) { }
+Vec2::Vec2( double const& x_init, double const& y_init )
+  : x( x_init ), y( y_init ) { }
 
 
 Vec2 operator*( double const& a, Vec2 const& myvec )
 {
-    return Vec2( a * myvec.x, a * myvec.y );
+  return Vec2( a * myvec.x, a * myvec.y );
 }
 
 
 Vec2 operator*( short const& a, Vec2 const& myvec )
 {
-    return static_cast<double>( a ) * myvec;
+  return static_cast<double>( a ) * myvec;
 }
 
 
 Vec2 operator+( Vec2 const& left, Vec2 const& right )
 {
-    return Vec2( left.x + right.x, left.y + right.y );
+  return Vec2( left.x + right.x, left.y + right.y );
 }
 
 
 Vec2 operator-( Vec2 const& left, Vec2 const& right )
 {
-    return left + ( ( -1.0 ) * right );
+  return left + ( ( -1.0 ) * right );
 }
 
 
 double operator*( Vec2 const& left, Vec2 const& right )
 {
-    return left.x * right.x + left.y * right.y;
+  return left.x * right.x + left.y * right.y;
 }
 
 
 double abs( Vec2 const& v )
 {
-    return sqrt( v * v );
+  return sqrt( v * v );
 }
 
 
 ostream& operator<<( ostream& stream, Vec2 const& myvec )
 {
-    stream << myvec.x << ' ' << myvec.y << endl;
-    return stream;
+  stream << myvec.x << ' ' << myvec.y << endl;
+  return stream;
 }

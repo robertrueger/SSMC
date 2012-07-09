@@ -85,7 +85,8 @@ B=0
 
 # ------------------ DATA ANALYSIS OPTIONS --------------------
 
-# do you want SSMCSA to call the plotting scripts automatically? (requires gnuplot and pyxplot)
+# do you want SSMCSA to call the plotting scripts automatically? 
+# (requires gnuplot and pyxplot)
 run_plots=0
 
 # do you want to take images of the system?
@@ -98,9 +99,9 @@ images=10
 # ----------------------- EXECUTION --------------------------
 
 time ./ssmcsa	$system_type $N $periodic \
-				$init \
-				$T_start $T_end \
-				$t_end $cooling_schedule \
-				$t_boost \
-				$run_plots $images \
-				$J $g $B
+              $init \
+              $T_start $T_end \
+              $t_end $cooling_schedule \
+              $t_boost \
+              $run_plots $images \
+              $J $g $B

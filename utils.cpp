@@ -24,7 +24,7 @@
 
 void ostream_setup( ostream& stream )
 {
-    stream << setiosflags( ios::scientific );
-    stream.setf( ios::showpos );
-    stream.precision( numeric_limits<float>::digits10 + 1 );
+  stream << setiosflags( ios::scientific );
+  stream.setf( ios::showpos );
+  stream.precision( numeric_limits<float>::digits10 + 1 );
 }

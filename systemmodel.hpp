@@ -32,53 +32,54 @@ class SystemModel
 {
     // ----- SYSTEM MODEL TEMPLATE (DEFINES INTERFACE) -----
 
-    protected:
+  protected:
 
-        // the model's properties and environment
-        bool periodic;
-        double B, T;
+    // the model's properties and environment
+    bool periodic;
+    double B, T;
 
-        // the model's time in Monte Carlo steps
-        unsigned long int time;
+    // the model's time in Monte Carlo steps
+    unsigned long int time;
 
-        // random number generator
-        gsl_rng* rng;
+    // random number generator
+    gsl_rng* rng;
 
-        // color palette for the png output
-        png::palette pal;
+    // color palette for the png output
+    png::palette pal;
 
-        // working directory
-        string cwd;
+    // working directory
+    string cwd;
 
-    public:
+  public:
 
-        SystemModel( const bool& periodic, const double& B, const double& T, const string& cwd );
-        virtual ~SystemModel();
-        
-        // graphical output
-        virtual png::image< png::index_pixel > get_image() const = 0;
+    SystemModel( const bool& periodic, const double& B,
+                 const double& T, const string& cwd );
+    virtual ~SystemModel();
 
-        // spin preparation
-        virtual bool prepare( const char& mode ) = 0;
+    // graphical output
+    virtual png::image< png::index_pixel > get_image() const = 0;
 
-        // Monte Carlo step
-        virtual void mcstep() = 0;
-        virtual void mcstep_dry( const unsigned int& k_max ) = 0;
+    // spin preparation
+    virtual bool prepare( const char& mode ) = 0;
 
-        // external parameter changing
-        void set_T( const double& newT );
-        void set_B( const double& newB );
+    // Monte Carlo step
+    virtual void mcstep() = 0;
+    virtual void mcstep_dry( const unsigned int& k_max ) = 0;
 
-        // observables measurements
-        virtual unsigned int spin_count() const = 0;
-        virtual unsigned long int t() const = 0;
-        virtual double h() const = 0;
-        virtual double m() const = 0;
-        virtual vector<double> ss_corr() const = 0;
+    // external parameter changing
+    void set_T( const double& newT );
+    void set_B( const double& newB );
 
-        // model specific function invocations
-        virtual void special_permcs( const unsigned int& mode ) { };
-        virtual void special_perbin( const unsigned int& mode ) { };
+    // observables measurements
+    virtual unsigned int spin_count() const = 0;
+    virtual unsigned long int t() const = 0;
+    virtual double h() const = 0;
+    virtual double m() const = 0;
+    virtual vector<double> ss_corr() const = 0;
+
+    // model specific function invocations
+    virtual void special_permcs( const unsigned int& mode ) { };
+    virtual void special_perbin( const unsigned int& mode ) { };
 };
 
 #endif // _SYSTEMMODEL_H_INCLUDED

@@ -21,70 +21,70 @@
 // ----- SIMULATION DATA STRUCTURES -----
 
 struct sim_parameters {
-    // ----- INPUT STRUCT FOR SIMRUN() -----
+  // ----- INPUT STRUCT FOR SIMRUN() -----
 
-    unsigned int system_type;
+  unsigned int system_type;
 
-    unsigned int N;
-    bool periodic;
+  unsigned int N;
+  bool periodic;
 
-    char init;
-    unsigned int drysweeps;
+  char init;
+  unsigned int drysweeps;
 
-    unsigned int bins;
-    unsigned int binwidth;
-    unsigned int intersweeps;
+  unsigned int bins;
+  unsigned int binwidth;
+  unsigned int intersweeps;
 
-    bool run_plot;
-    unsigned int take_images;
+  bool run_plot;
+  unsigned int take_images;
 
-    bool calc_autocorr;
-    bool calc_sscorr;
+  bool calc_autocorr;
+  bool calc_sscorr;
 
-    unsigned int smode_perbin;
-    unsigned int smode_permcs;
+  unsigned int smode_perbin;
+  unsigned int smode_permcs;
 
-    unsigned int use_fsize_correction;
+  unsigned int use_fsize_correction;
 
-    double J;
-    double g;
-    double B;
-    double T;
+  double J;
+  double g;
+  double B;
+  double T;
 };
 
 
 struct sim_results {
-    // ----- OUTPUT STRUCT FOR SIMRUN() -----
- 
-    bool success;
+  // ----- OUTPUT STRUCT FOR SIMRUN() -----
 
-    double h;
-    double sigma3_h;
+  bool success;
 
-    double c;
-    double sigma3_c;
+  double h;
+  double sigma3_h;
 
-    double m;
-    double sigma3_m;
+  double c;
+  double sigma3_c;
 
-    double x;
-    double sigma3_x;
+  double m;
+  double sigma3_m;
 
-    double tau;
+  double x;
+  double sigma3_x;
+
+  double tau;
 };
 
 
 struct simulation {
-    // ----- COMBINED SIMULATION PARAMS AND RESULTS -----
+  // ----- COMBINED SIMULATION PARAMS AND RESULTS -----
 
-    sim_parameters par;
-    sim_results res;
+  sim_parameters par;
+  sim_results res;
 };
 
 
 struct bin_results {
-    // ----- RESULTS OF A SINGLE BIN -----
-    
-    double h, h2;
-    double m, m2;
+  // ----- RESULTS OF A SINGLE BIN -----
+
+  double h, h2;
+  double m, m2;
 };

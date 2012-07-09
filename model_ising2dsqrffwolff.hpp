@@ -33,10 +33,10 @@ using namespace std;
 
 
 struct lsite_2dsquare {
-    // ----- HELPER STRUCT: POSITION ON A 2D SQUARE LATICE -----
-    unsigned short int line, col;
-    lsite_2dsquare();
-    lsite_2dsquare( const unsigned int& line, const unsigned int& col );
+  // ----- HELPER STRUCT: POSITION ON A 2D SQUARE LATICE -----
+  unsigned short int line, col;
+  lsite_2dsquare();
+  lsite_2dsquare( const unsigned int& line, const unsigned int& col );
 };
 
 
@@ -44,27 +44,27 @@ class IsingModel2dWolff: public IsingModel2d
 {
     // ----- 2D FIELD-FREE ISING MODEL (WOLFF-ALGORITHM) -----
 
-    protected:
+  protected:
 
-        vector< vector<bool> > mask;
-        vector< lsite_2dsquare > mask_items;
-        vector< lsite_2dsquare > mask_candidates;
+    vector< vector<bool> > mask;
+    vector< lsite_2dsquare > mask_items;
+    vector< lsite_2dsquare > mask_candidates;
 
-        double add_prob;
+    double add_prob;
 
-        vector<unsigned long int> cluster_size;
+    vector<unsigned long int> cluster_size;
 
-    public:
+  public:
 
-        IsingModel2dWolff( const unsigned int& N, const bool& periodic,
-                           const double& J, const double& T,
-                           const unsigned int& fsize_correction, const string& cwd );
+    IsingModel2dWolff( const unsigned int& N, const bool& periodic,
+                       const double& J, const double& T,
+                       const unsigned int& fsize_correction, const string& cwd );
 
-        png::image< png::index_pixel > get_image() const;
+    png::image< png::index_pixel > get_image() const;
 
-        void wolff_clusterflip();
+    void wolff_clusterflip();
 
-        void mcstep();
+    void mcstep();
 };
 
 #endif // _MODEL_ISING2DSQRFFWOLFF_H_INCLUDED

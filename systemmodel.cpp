@@ -22,30 +22,32 @@
 
 // ----- SYSTEM MODEL TEMPLATE (DEFINES INTERFACE) -----
 
-SystemModel::SystemModel( const bool& periodic, const double& B, const double& T, const string& cwd )
-    : periodic( periodic ), B( B ), T( T ), time( 0 ), cwd( cwd )
+SystemModel::SystemModel( const bool& periodic, const double& B,
+                          const double& T, const string& cwd )
+  : periodic( periodic ), B( B ), T( T ), time( 0 ), cwd( cwd )
 {
-    // initialize the model's random number generator (Mersenne Twister)
-    rng = gsl_rng_alloc( gsl_rng_mt19937 );
-    gsl_rng_set( rng, rand() );
+  // initialize the model's random number generator (Mersenne Twister)
+  rng = gsl_rng_alloc( gsl_rng_mt19937 );
+  gsl_rng_set( rng, rand() );
 }
 
 
 SystemModel::~SystemModel()
 {
-    // free rng's memory
-    gsl_rng_free( rng );
+  // free rng's memory
+  gsl_rng_free( rng );
 }
 
 
 void SystemModel::set_T( const double& newT )
 {
-    if ( newT >= 0 ) {
-        T = newT;
-    }
+  if ( newT >= 0 ) {
+    T = newT;
+  }
 }
 
 
-void SystemModel::set_B( const double& newB ) {
-    B = newB;
+void SystemModel::set_B( const double& newB )
+{
+  B = newB;
 }

@@ -36,27 +36,27 @@ class IsingModel2dDipole: public IsingModel2d
 {
     // ------- 2D ISING MODEL WITH LONG RANGE DIPOLE INTERACTION ---------
 
-    protected:
+  protected:
 
-        // strength of dipole-dipole interaction
-        double g;
-        double H_memory;
+    // strength of dipole-dipole interaction
+    double g;
+    double H_memory;
 
-    public:
+  public:
 
-        IsingModel2dDipole( const unsigned int& N, const bool& periodic,
-                            const double& J, const double& g,
-                            const double& B, const double& T, string cwd );
+    IsingModel2dDipole( const unsigned int& N, const bool& periodic,
+                        const double& J, const double& g,
+                        const double& B, const double& T, string cwd );
 
-        bool prepare( const char& mode );
+    bool prepare( const char& mode );
 
-        void metropolis_singleflip();
-        void metropolis_mirror();
-        void metropolis_blockflip();
+    void metropolis_singleflip();
+    void metropolis_mirror();
+    void metropolis_blockflip();
 
-        void mcstep();
+    void mcstep();
 
-        double H() const;
+    double H() const;
 };
 
 #endif // _MODEL_ISING2DSQRDIPOLEMET_H_INCLUDED

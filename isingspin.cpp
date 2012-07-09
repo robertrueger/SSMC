@@ -27,25 +27,25 @@ IsingSpin::IsingSpin() : S( 1 ) { }
 
 int IsingSpin::get() const
 {
-    return S;
+  return S;
 }
 
 
 void IsingSpin::set( const int& newS )
 {
-    if ( ( newS == +1 ) || ( newS == -1 ) ) {
-        S = newS;
-    }
+  if ( ( newS == +1 ) || ( newS == -1 ) ) {
+    S = newS;
+  }
 }
 
 
 void IsingSpin::flip()
 {
-    S = -1 * S;
+  S = -1 * S;
 }
 
 
 int IsingSpin::operator*( const IsingSpin& S ) const
 {
-    return get() * S.get();
+  return get() * S.get();
 }

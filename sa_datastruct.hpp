@@ -21,41 +21,41 @@
 // ----- SIMULATED ANNEALING DATA STRUCTURES -----
 
 struct sa_parameters {
-    // ----- INPUT STRUCT FOR SARUN() -----
+  // ----- INPUT STRUCT FOR SARUN() -----
 
-    unsigned int system_type;
+  unsigned int system_type;
 
-    unsigned int N;
-    bool periodic;
+  unsigned int N;
+  bool periodic;
 
-    char init;
+  char init;
 
-    double T_start, T_end;
+  double T_start, T_end;
 
-    unsigned long int t_end;
-    char cooling_schedule;
+  unsigned long int t_end;
+  char cooling_schedule;
 
-    unsigned int t_boost;
+  unsigned int t_boost;
 
-    bool run_plot;
-    unsigned int take_images;
+  bool run_plot;
+  unsigned int take_images;
 
-    double J;
-    double g;
-    double B;
+  double J;
+  double g;
+  double B;
 };
 
 
 struct sa_results {
-    // ----- OUTPUT STRUCT FOR SARUN() -----
+  // ----- OUTPUT STRUCT FOR SARUN() -----
 
-    bool success;
+  bool success;
 };
 
 
 struct simann {
-    // ----- COMBINED SIMULATED ANNEALING PARAMS AND RESULTS  -----
+  // ----- COMBINED SIMULATED ANNEALING PARAMS AND RESULTS  -----
 
-    sa_parameters par;
-    sa_results res;
+  sa_parameters par;
+  sa_results res;
 };

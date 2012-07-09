@@ -39,68 +39,71 @@ class Ising2dDipSqr: public SystemModel
 {
     // ------ 2D ISING MODEL ON A SQUARE LATTICE WITH DIP-DIP-INT -----
 
-    protected:
+  protected:
 
-        double J, g;
-        unsigned long int N;
-        int size;
-        vector< vector<IsingSpin> > spin;
+    double J, g;
+    unsigned long int N;
+    int size;
+    vector< vector<IsingSpin> > spin;
 
-        // finite size correction mode
-        unsigned int fsize_correction_mode;
-        bool fsize_ordered_phase;
+    // finite size correction mode
+    unsigned int fsize_correction_mode;
+    bool fsize_ordered_phase;
 
-        // precalculated interaction coefficients
-        vector< vector<double> > effint;
+    // precalculated interaction coefficients
+    vector< vector<double> > effint;
 
-        // structure factor calculation parameters
-        double k_range;
-        unsigned int k_points;
-        vector< vector<double> > sf_sum;
-        unsigned int sf_measurements;
+    // structure factor calculation parameters
+    double k_range;
+    unsigned int k_points;
+    vector< vector<double> > sf_sum;
+    unsigned int sf_measurements;
 
-    public:
+  public:
 
-        Ising2dDipSqr( const unsigned int& size, const bool& periodic,
-                       const double& J, const double& g, const double& B, const double& T,
-                       const unsigned int& fsize_correction_mode, const string& cwd );
-        ~Ising2dDipSqr();
+    Ising2dDipSqr( const unsigned int& size, const bool& periodic,
+                   const double& J, const double& g,
+                   const double& B, const double& T,
+                   const unsigned int& fsize_correction_mode,
+                   const string& cwd );
+    ~Ising2dDipSqr();
 
-        double calc_effint_dipdip( const int& dl_seed, const int& dc_seed, const int& system_clones );
+    double calc_effint_dipdip( const int& dl_seed, const int& dc_seed,
+                               const int& system_clones );
 
-        png::image< png::index_pixel > get_image() const;
-        
-        bool prepare_striped( const unsigned int& stripe_width );
-        bool prepare( const char& mode );
+    png::image< png::index_pixel > get_image() const;
 
-
-        // ----- METROPOLIS ALGORITHM WITH SINGLE SPIN FLIP -----
-
-        void metropolis_singleflip();
-
-        void mcstep();
-
-        void mcstep_dry( const unsigned int& k_max );
+    bool prepare_striped( const unsigned int& stripe_width );
+    bool prepare( const char& mode );
 
 
-        // ----- MEASUREMENT FUNCTIONS -----
+    // ----- METROPOLIS ALGORITHM WITH SINGLE SPIN FLIP -----
 
-        double H() const;
-        double h() const;
+    void metropolis_singleflip();
 
-        unsigned long int t() const;
+    void mcstep();
 
-        int M() const;
-        double m() const;
+    void mcstep_dry( const unsigned int& k_max );
 
-        vector<double> ss_corr() const;
 
-        unsigned int spin_count() const;
+    // ----- MEASUREMENT FUNCTIONS -----
 
-        void special_perbin( unsigned int& mode );
+    double H() const;
+    double h() const;
 
-        void sf_calc();
-        double sf_k_calc( double& kx, double& ky );
+    unsigned long int t() const;
+
+    int M() const;
+    double m() const;
+
+    vector<double> ss_corr() const;
+
+    unsigned int spin_count() const;
+
+    void special_perbin( unsigned int& mode );
+
+    void sf_calc();
+    double sf_k_calc( double& kx, double& ky );
 };
 
 #endif // _MODEL_DIP_SQR_H_INCLUDED
