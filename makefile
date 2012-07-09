@@ -16,16 +16,16 @@
 # along with SSMC.  If not, see <http://www.gnu.org/licenses/>.
 
 
-CXX				= g++
-CXXFLAGS	= -Wall -march=native -O3 -flto -fuse-linker-plugin
-DEFINES		=
-LDFLAGS		= -lgsl -lgslcblas `libpng-config --ldflags`
+CXX       = g++
+CXXFLAGS  = -Wall -march=native -O3 -flto -fuse-linker-plugin
+DEFINES   =
+LDFLAGS   = -lgsl -lgslcblas `libpng-config --ldflags`
 
-EXECTUABLES	= ssmcsim ssmcsa
+EXECTUABLES = ssmcsim ssmcsa
 
-OBJECTS_SIM	= ssmcsim.o simrun.o
-OBJECTS_SA	= ssmcsa.o sarun.o sa_coolingschedules.o
-OBJECTS_ALL	= systemmodel.o isingspin.o utils.o utils_vec2.o \
+OBJECTS_SIM = ssmcsim.o simrun.o
+OBJECTS_SA  = ssmcsa.o sarun.o sa_coolingschedules.o
+OBJECTS_ALL = systemmodel.o isingspin.o utils.o utils_vec2.o \
               model_dip_sqr.o model_dip_hc.o model_ising1dmet.o \
               model_ising2dsqrmet.o model_ising2dsqrffwolff.o \
               model_ising2dsqrdipolemet.o
@@ -56,7 +56,7 @@ ssmcsa.o : ssmcsa.cpp sarun.hpp
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c ssmcsa.cpp -o ssmcsa.o
 
 simrun.o : simrun.hpp simrun.cpp systemmodel.hpp utils.hpp sim_datastruct.hpp \
-	         $(HEADERS_MODELS)
+           $(HEADERS_MODELS)
 	$(CXX) $(CXXFLAGS) $(DEFINES) -c simrun.cpp -o simrun.o
 
 sarun.o : sarun.hpp sarun.cpp systemmodel.hpp utils.hpp sa_datastruct.hpp \
