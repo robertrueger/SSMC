@@ -90,6 +90,5 @@ sed -e 's/inf/0.0000000e+00/g' results.raw \
 | sed -e 's/nan/0.0000000e+00/g' > results.dat
 
 # plot results.dat with pyxplot
-echo -e "[latex]\nPreamble = \usepackage[ngerman]{babel}" >> .pyxplotrc
 pyxplot ssmcsim_example_calcsf.pyx
 pyxplot ssmcsim_example_plot.pyx || true
