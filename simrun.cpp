@@ -103,6 +103,8 @@ sim_results simrun( const sim_parameters par, const string dir_init )
   } else if ( par.system_type == 6 ) {
     model = new Ising2dDipHC( par.N, par.J, par.g, par.B,
                               par.T, par.use_fsize_correction, dir );
+  // ___ ADD CUSTOM SYSTEM MODELS HERE ___
+
   } else {
     cout << "ERROR creating the model system in " << dir << endl;
     return res;

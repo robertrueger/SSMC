@@ -19,15 +19,15 @@
 
 /* ------------- SPIN SYSTEM MONTE CARLO SIMULATED ANNEALING ----------------
  *
- * arguments:	[uint system_type]
- * 				[uint N] [bool periodic (0,1)]
- *				[char init (r,u,d,...)]
- *				[double T_start] [double T_end]
- * 				[ulint t_end] [char cooling_schedule]
- * 				[uint t_boost]
- *				[bool run_plots (0,1)] [uint take_images (0,1)]
- *				[double J] [double g]
- *				[double B]
+ * arguments: [uint system_type]
+ *            [uint N] [bool periodic (0,1)]
+ *            [char init (r,u,d,...)]
+ *            [double T_start] [double T_end]
+ *            [ulint t_end] [char cooling_schedule]
+ *            [uint t_boost]
+ *            [bool run_plots (0,1)] [uint take_images (0,1)]
+ *            [double J] [double g]
+ *            [double B]
  *
  * system_type:
  * -- 1: one-dimensional Ising-Model with single-flip Metropolis-Algorithm

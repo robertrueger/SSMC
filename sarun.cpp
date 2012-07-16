@@ -100,6 +100,8 @@ sa_results sarun( const sa_parameters par, const string dir_init )
   } else if ( par.system_type == 6 ) {
     model = new Ising2dDipHC( par.N, par.J, par.g, par.B,
                               par.T_start, 0, dir );
+    // ___ ADD CUSTOM SYSTEM MODELS HERE ___
+
   } else {
     cout << "ERROR creating the model system in " << dir << endl;
     return res;
@@ -184,12 +186,12 @@ sa_results sarun( const sa_parameters par, const string dir_init )
       << ", N = " << par.N << ", periodic = " << par.periodic
       << ", init = " << par.init << ", T = " << par.T_start << "->" << par.T_end
       << ", t_end	= " << par.t_end << "cooling_schedule = "
-                                                         << par.cooling_schedule
+      << par.cooling_schedule
       << ", J = " << par.J << ", g = " << par.g << ", B = " << par.B;
-  int plot_size = ( par.t_end < 1600 ) ? 
+  int plot_size = ( par.t_end < 1600 ) ?
                   1600 : min( ( unsigned long int )10000, par.t_end );
   run_plot <<
-  "  set terminal pngcairo size " << plot_size << ",600 \n\
+           "  set terminal pngcairo size " << plot_size << ",600 \n\
 	set output 'run_plot.png' \n\n\
 	set multiplot layout 2,1 title '" << tmp.str() << "'\n\
 	set grid x y \n\

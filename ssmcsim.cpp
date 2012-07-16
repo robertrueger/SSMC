@@ -20,17 +20,17 @@
 /* ---------------- SPIN SYSTEM MONTE CARLO SIMULATION ----------------------
  *
  * arguments:	[uint system_type]
- * 				[uint N] [bool periodic (0,1)]
- *				[char init (r,u,d,...)] [uint drysweeps]
- * 				[uint bins] [uint binwidth] [uint intersweeps]
- *				[bool run_plots (0,1)]
- * 				[uint take_images]
- *				[bool calc_autocorr (0,1)] [bool calc_sscorr (0,1)]
- * 				[uint smode_perbin] [uint smode_permcs]
- * 				[uint finite_size_correction (0,1,2)]
- *				[double J] [double g]
- *				[double B]
- *				[double T]
+ *            [uint N] [bool periodic (0,1)]
+ *            [char init (r,u,d,...)] [uint drysweeps]
+ *            [uint bins] [uint binwidth] [uint intersweeps]
+ *            [bool run_plots (0,1)]
+ *            [uint take_images]
+ *            [bool calc_autocorr (0,1)] [bool calc_sscorr (0,1)]
+ *            [uint smode_perbin] [uint smode_permcs]
+ *            [uint finite_size_correction (0,1,2)]
+ *            [double J] [double g]
+ *            [double B]
+ *            [double T]
  *
  * system_type:
  * -- 1: one-dimensional Ising-Model with single-flip Metropolis-Algorithm
