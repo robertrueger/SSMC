@@ -265,7 +265,7 @@ Tells SSMC to measure spin-spin correlation functions.
 Note: not implemented for systemtype 6!  
 
 __uint smode_perbin__  
-Sets if any 'special' model specific things should be done once every bin.  
+Sets if any 'special' model specific things should be done once every bin.
 The idea behind this option and smode_permcs (see below) is to incorporate model
 specific things (like measurements) into SMMC's general simulation procedure:
 The structure factor is for example only interesting for some models (those with
@@ -278,7 +278,7 @@ matter what you set as smode_perbin! The new dipolar models (5,6) will measure
 the structure factor if you set smode_perbin to anything but 0.
 
 __uint smode_permcs__  
-Same as smode_perbin, but at the level of individual Monte Carlo steps.  
+Same as smode_perbin , but at the level of individual Monte Carlo steps.  
 Note: Not used at all in _any_ of the models, that come with SSMC!
 
 __uint finite_size_correction__  
