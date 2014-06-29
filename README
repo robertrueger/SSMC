@@ -88,7 +88,7 @@ temperature using the Wolff algorithm. This should not take longer than a
 minute. All results are written to an output folder whose name is determined by
 the simulations parameters. Your output folder should look somewhat like this:
 
-(output: http://itp.uni-frankfurt.de/~rueger/SSMC/output_example0/)
+(output: http://work.robertrueger.de/SSMC/output_example0/)
 
     sim3_N100p_u1000_100-100-1_fsc2_smode-0-0_J01000_g00000_B00000_T02269
     ├── ac.log
@@ -122,7 +122,7 @@ stdout/stderr is rather verbose, but within half an hour (at most!) you should
 have 36 simulation output folders and most notably a plot of the Ising model's
 famous thermodynamics!
 
-(output: http://itp.uni-frankfurt.de/~rueger/SSMC/output_example1/)
+(output: http://work.robertrueger.de/SSMC/output_example1/)
 
     example
     ├── results2.dat
@@ -197,8 +197,8 @@ Sets the size of the system. The way N is interpreted depends on which system
 you choose to simulate: For one-dimensional models (systemtype 1) it is just the
 total number of spins in the chain. For two-dimensional square models (2-5) it
 is the length of a side, so that the system has N^2 spins in total. For the
-honeycomb lattice model (6) it  is the size of the original system as defined in 
-arXiv:1207.1864 [cond-mat.stat-mech] (http://arxiv.org/abs/1207.1864).
+honeycomb lattice model (6) it is the size of the original system as defined in
+Phys. Rev. B 86, 024431 (2012).
 
   bool periodic
 Sets the boundary conditions.
