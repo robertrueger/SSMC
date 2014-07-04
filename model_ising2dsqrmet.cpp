@@ -354,11 +354,11 @@ vector<double> IsingModel2d::ss_corr() const
   vector<unsigned int> samples;
   result.resize( spin.size(), 0 );
   samples.resize( spin.size(), 0 );
-  for ( unsigned int i = 0; i < size; i++ ) {
-    for ( unsigned int j = 0; j < size; j++ ) {
-      result[abs( int( i - j ) )] += spin[i][i] * spin[i][j];
-      result[abs( int( i - j ) )] += spin[i][i] * spin[j][i];
-      samples[abs( int( i - j ) )] += 2;
+  for ( int i = 0; i < size; i++ ) {
+    for ( int j = 0; j < size; j++ ) {
+      result[abs( i - j ) ] += spin[i][i] * spin[i][j];
+      result[abs( i - j ) ] += spin[i][i] * spin[j][i];
+      samples[abs( i - j ) ] += 2;
     }
   }
   for ( unsigned int d = 0; d < size; d++ ) {
